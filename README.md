@@ -1,306 +1,221 @@
 # 医院工单管理系统
 
-专为医疗机构设计的现代化工单管理系统，基于 Vue 3 + TypeScript + Vite 构建，优化医院内部工作流程，提升故障响应效率。
+基于Vue 3 + TypeScript + Vite构建的现代化工单管理系统，专门针对医疗信息科场景优化。
 
-## ✨ 特性
+## ✨ 功能特性
 
-- 🎨 **现代化 UI**: 优雅的设计，响应式布局
-- ⚡ **高性能**: 基于 Vue 3 + Vite，开发体验优秀
-- 🔒 **类型安全**: 完整的 TypeScript 支持
-- 🔄 **实时同步**: WebSocket 实时通知
-- 📱 **响应式**: 支持桌面和移动端
-- 🎯 **工单管理**: 完整的工单创建、查看、编辑、状态管理
-- 🔍 **搜索筛选**: 强大的工单列表筛选功能
-- 📊 **状态跟踪**: 实时跟踪工单状态变化
+### 核心功能
+- **工单全流程管理**：创建、查看、编辑、处理、关闭工单
+- **权限管理**：多角色访问控制（管理员、科主任、普通用户）
+- **部门管理**：支持多科室/部门管理
+- **统计分析**：可视化数据统计和图表展示
+
+### 医院场景优化
+- **医疗专属分类**：系统故障、设备报修、网络问题、软件需求、数据查询、账号问题
+- **紧急优先级**：低、中、高、紧急四档优先级
+- **状态跟踪**：待处理、处理中、已解决、已关闭
+
+### 技术特性
+- **现代化架构**：Vue 3 + TypeScript + Composition API
+- **状态管理**：Pinia集中式状态管理
+- **路由守卫**：完整的认证和权限控制
+- **响应式设计**：适配桌面端和移动端
+- **代码质量**：TypeScript强类型检查，ESLint + Prettier代码规范
 
 ## 🚀 快速开始
 
-### 前置要求
-
-- Node.js 18+
-- npm 或 yarn 或 pnpm
+### 环境要求
+- Node.js 20.19.0+ 或 22.12.0+
+- npm 或 pnpm 或 yarn
 
 ### 安装依赖
-
 ```bash
 npm install
 ```
 
 ### 环境配置
-
-1. 复制环境配置文件：
+1. 复制环境变量文件：
 ```bash
 cp .env.example .env
 ```
 
-2. 修改 `.env` 文件中的 API 地址：
-```env
-VITE_API_URL=http://your-backend-api:8083
+2. 配置环境变量：
+```bash
+# API 服务器地址
+VITE_API_URL=http://localhost:8083
+
+# 应用标题
+VITE_APP_TITLE=工单管理系统
 ```
 
-### 开发运行
-
+### 开发模式
 ```bash
 npm run dev
 ```
+应用将在 http://localhost:3500 启动
 
-访问 http://localhost:5173 查看应用。
-
-### 构建生产版本
-
+### 生产构建
 ```bash
 npm run build
 ```
+构建产物位于 `dist/` 目录
 
-构建产物在 `dist/` 目录。
-
-### 预览生产版本
-
+### 代码检查
 ```bash
-npm run preview
+# 类型检查
+npm run type-check
+
+# 代码格式化
+npm run format
+
+# ESLint检查
+npm run lint
+```
+
+### 测试
+```bash
+# 运行测试
+npm run test
+
+# 测试覆盖率
+npm run test:coverage
+
+# 测试UI界面
+npm run test:ui
 ```
 
 ## 📁 项目结构
 
 ```
-ticket-system/
-├── src/
-│   ├── components/          # Vue 组件
-│   │   ├── ticket/         # 工单相关组件
-│   │   └── ui/             # 通用 UI 组件
-│   ├── composables/         # 组合式函数
-│   ├── router/              # 路由配置
-│   ├── services/            # API 服务和 WebSocket
-│   ├── stores/              # Pinia 状态管理
-│   ├── types/               # TypeScript 类型定义
-│   ├── views/               # 页面组件
-│   └── utils/               # 工具函数
-├── public/                  # 静态资源
-├── .env.example            # 环境变量示例
-├── package.json            # 项目依赖
-├── tsconfig.json           # TypeScript 配置
-├── vite.config.ts          # Vite 配置
-└── README.md               # 项目说明
+src/
+├── components/          # 可复用组件
+│   ├── ticket/         # 工单相关组件
+│   └── ui/             # 基础UI组件
+├── composables/        # Vue组合式函数
+├── router/             # 路由配置
+├── services/           # API服务
+│   └── api/           # API客户端和接口
+├── stores/             # Pinia状态管理
+├── types/              # TypeScript类型定义
+├── utils/              # 工具函数
+├── views/              # 页面组件
+└── support/            # 支持的配置文件
 ```
 
-## 🔧 技术栈
+## 🔧 配置选项
 
-- **前端框架**: Vue 3 + Composition API
-- **构建工具**: Vite 5
-- **编程语言**: TypeScript 5.7
-- **状态管理**: Pinia
-- **路由管理**: Vue Router
-- **UI 框架**: 原生 CSS + 现代化设计
-- **HTTP 客户端**: Fetch API
-- **实时通信**: WebSocket
-- **代码规范**: ESLint + Prettier
-- **单元测试**: Vitest + Vue Test Utils
-- **类型检查**: 严格 TypeScript 模式
-- **性能监控**: 自定义性能监控工具
-- **错误处理**: 增强的错误处理系统
+### 看板模式
+系统支持两种访问模式：
 
-## 📖 使用说明
+1. **完整模式**（默认）
+   - 完整的登录和权限验证
+   - 多用户角色管理
 
-### 1. 工单创建
+2. **看板模式**
+   - 免登录访问
+   - 固定账号自动登录
+   - 适合大屏展示或监控面板
 
-访问 `/create-ticket` 页面，填写以下信息：
-- 工单标题（必填）
-- 工单描述（必填）
-- 工单类型（医疗设备报修、IT故障、后勤服务、卫生保洁、医用耗材补给、其他）
-- 优先级（低、中、高、紧急）
-- 申请科室（必填,支持医院科室选择）
-- 联系电话（必填）
-- 位置/房间号（必填）
-- 紧急说明（可选）
-- 设备编号（如适用）
+配置方式：修改 `src/support/config.ts` 中的 `dashboardConfig`
 
-### 2. 工单列表
+### API配置
+- 基础API地址：`VITE_API_URL` 环境变量
+- 请求超时：30秒
+- 自动错误重试
 
-访问 `/tickets` 查看所有工单，支持：
-- 状态筛选（待处理、处理中、已解决、已关闭）
-- 搜索功能
-- 按优先级、状态排序
+## 📊 工单管理
 
-### 3. 工单详情
+### 工单状态
+- **pending**：待处理（默认）
+- **progress**：处理中
+- **resolved**：已解决
+- **closed**：已关闭
 
-点击工单列表中的任意工单，查看详细信息和状态历史。
+### 工单优先级
+- **low**：低
+- **medium**：中
+- **high**：高
+- **urgent**：紧急
 
-### 4. 实时通知
+### 工单分类
+- **system_failure**：系统故障
+- **device_failure**：设备报修
+- **network_issue**：网络问题
+- **software_request**：软件需求
+- **data_query**：数据查询
+- **account_issue**：账号问题
+- **other**：其他
 
-当有新的工单创建或工单状态更新时，系统会通过 WebSocket 发送实时通知。
+## 🧪 测试
 
-## 🔌 API 接口
-
-系统需要后端 API 支持，主要接口如下：
-
-### 工单相关
-
-- `POST /WorkApi/createWorkOrder` - 创建工单
-- `POST /WorkApi/queryWorkOrders` - 查询工单列表
-- `POST /WorkApi/queryWorkOrder` - 查询工单详情
-- `POST /WorkApi/updateWorkOrder` - 更新工单
-- `POST /WorkApi/updateWorkOrderStatus` - 更新工单状态
-
-### WebSocket
-
-- `ws://your-backend:port/ws` - 实时通知
-
-### 数据格式
-
-**创建工单请求**:
-```json
-{
-  "title": "工单标题",
-  "type": "bug",
-  "priority": "高",
-  "department": "信息科",
-  "description": "问题描述",
-  "phone": "",
-  "location": "",
-  "urgencyNote": "",
-  "workContent": "",
-  "workResult": "",
-  "tags": ""
-}
-```
-
-**创建工单响应**:
-```json
-{
-  "handleType": true,
-  "handleData": {
-    "id": 1001,
-    "title": "工单标题",
-    "type": "bug",
-    "priority": "高",
-    "status": "待处理",
-    "assignee": "",
-    "createTime": "2026-02-03T10:30:00",
-    "updateTime": "2026-02-03T10:30:00"
-  },
-  "handleMessage": "工单创建成功"
-}
-```
-
-## 🎨 主要功能
-
-### 工单管理
-- ✅ 创建工单
-- ✅ 查看工单列表
-- ✅ 查看工单详情
-- ✅ 编辑工单
-- ✅ 更新工单状态
-- ✅ 工单筛选和搜索
-
-### 实时同步
-- ✅ WebSocket 连接状态显示
-- ✅ 新工单实时通知
-- ✅ 工单状态更新通知
-
-### 用户体验
-- ✅ 表单验证
-- ✅ 响应式设计
-- ✅ 优雅的错误处理
-- ✅ 加载状态提示
-- ✅ 成功/错误通知
-
-## 🛠️ 开发指南
-
-### 代码规范和质量
-
-- 使用 TypeScript 进行严格类型检查
-- 遵循 Vue 3 最佳实践
-- 使用 Composition API
-- 组件按功能模块化组织
-- **使用 ESLint 进行代码规范检查**
-- **使用 Prettier 进行代码自动格式化**
-- **遵循统一的编码风格**
-
-#### 代码检查和格式化
-
-```bash
-# 运行 ESLint 检查并自动修复
-npm run lint
-
-# 使用 Prettier 格式化代码
-npm run format
-
-# 运行 TypeScript 类型检查
-npm run type-check
-```
-
-### 添加新功能
-
-1. 在 `src/types/` 中定义类型
-2. 在 `src/services/` 中添加 API 调用
-3. 在 `src/stores/` 中管理状态（如需要）
-4. 在 `src/components/` 中创建组件
-5. 在 `src/views/` 中创建页面
-6. 在 `src/router/` 中配置路由
-7. **为组件和函数编写单元测试**
-8. **确保代码通过 ESLint 检查**
-
-### 测试
-
-项目使用 Vitest 进行单元测试，配合 Vue Test Utils 测试 Vue 组件。
+项目使用Vitest进行单元测试：
 
 ```bash
 # 运行所有测试
 npm run test
 
-# 运行测试并显示 UI 界面
-npm run test:ui
-
-# 运行测试并生成覆盖率报告
+# 生成测试覆盖率报告
 npm run test:coverage
 
-# 运行 TypeScript 类型检查
-npm run type-check
+# 使用测试UI界面
+npm run test:ui
 ```
 
-#### 测试文件命名约定
-- 组件测试: `ComponentName.test.ts`
-- 工具函数测试: `utilityName.test.ts`
-- Store 测试: `storeName.test.ts`
+## 📚 文档
 
-### 性能监控
+```bash
+# 开发文档服务器
+npm run docs:dev
 
-项目内置了性能监控工具，可以监控：
-- Core Web Vitals (FCP, LCP, FID, CLS)
-- API 请求性能
-- 内存使用情况
-- 帧率 (FPS)
+# 构建文档
+npm run docs:build
 
-在开发环境下，性能监控会自动启动。生产环境下可以通过 `PerformanceMonitor.start()` 手动启动。
+# 预览构建的文档
+npm run docs:preview
+```
+
+## 🛠️ 开发指南
+
+### 代码规范
+- 使用TypeScript进行类型检查
+- 遵循ESLint规范
+- 使用Prettier格式化代码
+- 遵循Vue 3 Composition API最佳实践
+
+### 组件开发
+1. 使用 `defineComponent` 定义组件
+2. 使用Composition API组织逻辑
+3. 为props和emits提供类型定义
+4. 组件按功能分类存放
+
+### 状态管理
+- 使用Pinia进行状态管理
+- 按业务领域划分store
+- 使用TypeScript定义state类型
+- 通过actions更新状态
+
+### API集成
+- 使用 `ApiClient` 基类封装HTTP请求
+- 按业务模块划分API服务
+- 统一的错误处理机制
+- 请求/响应数据转换
 
 ## 🤝 贡献指南
 
-欢迎贡献代码！请遵循以下步骤：
-
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'feat: Add AmazingFeature'`)
+1. Fork 项目
+2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
 4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 开启 Pull Request
+5. 提交Pull Request
 
 ## 📄 许可证
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+本项目采用私有许可证，未经许可不得复制和使用。
 
-## 🙏 致谢
+## 📞 支持与联系
 
-- 参考项目：MatrixOrigWeb
-- Vue 3 社区
-- 所有开源贡献者
-
-## 📞 联系方式
-
-如有问题或建议，请通过 GitHub Issues 提交。
-
-## 🌟 Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=your-username/ticket-system&type=Date)](https://star-history.com/#your-username/ticket-system&Date)
+如有问题或建议，请联系项目维护者。
 
 ---
 
-**注意**: 本项目为开源版本，如需生产环境使用，请确保后端 API 服务正常运行。
+**构建现代医疗信息化管理系统**
