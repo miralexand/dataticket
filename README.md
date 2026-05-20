@@ -226,6 +226,11 @@ npm run docs:preview
 ## 📈 项目统计
 
 ### GitHub 数据
+
+#### Star History
+![Star History Chart](https://api.star-history.com/svg?repos=miralexand/dataticket&type=Date)
+
+#### 项目活跃度
 ![GitHub commit activity chart](https://github-readme-activity-graph.vercel.app/graph?username=miralexand&repo=dataticket&theme=github-compact&hide_border=true&area=true)
 
 ### 开发趋势
