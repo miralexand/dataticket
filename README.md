@@ -299,8 +299,13 @@ npm run type-check
 
 ## 🌟 Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=your-username/ticket-system&type=Date)](https://star-history.com/#your-username/ticket-system&Date)
-
+<a href="https://www.star-history.com/?repos=miralexand%2Fdataticket&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=miralexand/dataticket&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=miralexand/dataticket&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=miralexand/dataticket&type=date&legend=top-left" />
+ </picture>
+</a>
 ---
 
 **注意**: 本项目为开源版本，如需生产环境使用，请确保后端 API 服务正常运行。
