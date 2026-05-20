@@ -1,5 +1,12 @@
 # 医院工单管理系统
 
+![GitHub commits activity](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2Fmiralexand%2Fdataticket%2Fstats%2Fcommit_activity&query=%24%5B%3A%5D.total&label=Commits%20Activity&color=blue&cacheSeconds=86400)
+
+![GitHub Contributors](https://img.shields.io/github/contributors/miralexand/dataticket)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/miralexand/dataticket)
+![GitHub Issues](https://img.shields.io/github/issues/miralexand/dataticket)
+![GitHub Pull Requests](https://img.shields.io/github/issues-pr/miralexand/dataticket)
+
 基于Vue 3 + TypeScript + Vite构建的现代化工单管理系统，专门针对医疗信息科场景优化。
 
 ## ✨ 功能特性
@@ -215,6 +222,29 @@ npm run docs:preview
 ## 📞 支持与联系
 
 如有问题或建议，请联系项目维护者。
+
+## 📈 项目统计
+
+### GitHub 数据
+![GitHub commit activity chart](https://github-readme-activity-graph.vercel.app/graph?username=miralexand&repo=dataticket&theme=github-compact&hide_border=true&area=true)
+
+### 开发趋势
+```mermaid
+gantt
+    title 项目开发进度
+    dateFormat  YYYY-MM-DD
+    section 核心功能
+    认证模块             :done,    des1, 2024-01-01, 30d
+    工单管理             :done,    des2, 2024-02-01, 45d
+    部门管理             :done,    des3, 2024-03-15, 30d
+    section 优化功能
+    统计图表             :done,    des4, 2024-04-01, 25d
+    看板模式             :done,    des5, 2024-04-20, 20d
+    移动端适配           :active,  des6, 2024-05-10, 15d
+    section 未来计划
+    实时通知             :         des7, 2024-06-01, 30d
+    多语言支持           :         des8, 2024-07-01, 25d
+```
 
 ---
 
