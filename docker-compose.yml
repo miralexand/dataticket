@@ -1,0 +1,10 @@
+version: '3'
+services:
+  vite-dev:
+    build: .
+    ports:
+      - "3600:3500"
+    volumes:
+      - C:/Users/acer/Documents/bard:/app
+      - /app/node_modules
+    command: npm run dev
